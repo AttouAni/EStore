@@ -13,7 +13,7 @@ class User {
         );
         $stmt->execute([$email]);
 
-        return $stmt->fetch(); 
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
     public function register($name, $email, $password) {

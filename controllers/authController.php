@@ -63,7 +63,7 @@ if (isset($_POST['login']) || isset($_POST['admin_login'])) {
         }
 
         $_SESSION['user_id'] = $user['id_user'];
-        $_SESSION['role'] = 'user';
+        $_SESSION['role'] = $user['role'];
 
         header("Location: ../views/home.php");
         exit();
@@ -76,7 +76,7 @@ if (isset($_POST['login']) || isset($_POST['admin_login'])) {
         }
 
         $_SESSION['admin_id'] = $user['id_user'];
-        $_SESSION['role'] = 'admin';
+        $_SESSION['role'] = $user['role'];
 
         header("Location: ../views/admin/dashboard.php");
         exit();
