@@ -134,5 +134,84 @@ class Book {
         return $stmt->execute([$id]);
     }
 
+    public function getFeatured($limit = 4) {
+        $stmt = $this->conn->prepare(
+            "SELECT * FROM book LIMIT ?"
+        );
+        $stmt->bindValue(
+            1,
+            (int)$limit,
+            PDO::PARAM_INT
+        );
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCategories() {
+        $stmt = $this->conn->query(
+            "SELECT DISTINCT category FROM book"
+        );
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function searchBooks(
+        $search = '',
+        $sort = '',
+        $category = ''
+    ) {
+
+        $query = "SELECT * FROM book WHERE 1";
+        $params = [];
+
+        // SEARCH
+        if (!empty($search)) {
+
+            $query .= "
+                AND (
+                    title LIKE ?
+                    OR author LIKE ?
+                    OR description LIKE ?
+                )
+            ";
+
+            $searchTerm = "%$search%";
+
+            $params[] = $searchTerm;
+            $params[] = $searchTerm;
+            $params[] = $searchTerm;
+        }
+
+        // CATEGORY FILTER
+        if (!empty($category)) {
+
+            $query .= " AND category = ?";
+
+            $params[] = $category;
+        }
+
+        // SORTING
+        switch ($sort) {
+
+            case 'title_asc':
+                $query .= " ORDER BY title ASC";
+                break;
+
+            case 'price_asc':
+                $query .= " ORDER BY price ASC";
+                break;
+
+            case 'price_desc':
+                $query .= " ORDER BY price DESC";
+                break;
+        }
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute($params);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }
 ?>
