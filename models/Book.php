@@ -65,7 +65,7 @@ class Book {
             $stmt->execute([$id]);
             $book = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $oldImagePath = "/../public/uploads/" . $book['image'];
+            $oldImagePath = "../public/uploads/" . $book['image'];
 
             if (file_exists($oldImagePath)) {
                 unlink($oldImagePath);

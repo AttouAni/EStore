@@ -62,6 +62,7 @@ $books = $bookModel->getAll();
         <form
             action="../../controllers/bookController.php"
             method="POST"
+            enctype="multipart/form-data"
         >
 
             <input
