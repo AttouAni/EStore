@@ -72,12 +72,24 @@
             transform: translateY(-5px);
         }
 
+        .custom-carousel-btn {
+            width: 5%;
+        }
+
+        .carousel-control-prev {
+            left: -70px;
+        }
+
+        .carousel-control-next {
+            right: -70px;
+        }
+
     </style>
 
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container">
         <a class="navbar-brand fw-bold" href="home.php">
             ESTORE
@@ -185,41 +197,88 @@
     </div>
 </section>
 
-<!-- ================= CATEGORIES ================= -->
 
 <section class="py-5 bg-light">
     <div class="container">
         <h2 class="fw-bold mb-5">
             Browse Categories
         </h2>
-        <div class="row g-4">
-            <?php foreach ($categories as $category): ?>
-                <div class="col-md-3">
-                    <div
-                        class="card category-card text-white border-0 overflow-hidden"
-                        style="
-                            height:200px;
-                            background:
-                            linear-gradient(
-                                rgba(0,0,0,0.5),
-                                rgba(0,0,0,0.5)
-                            ),
-                            url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600');
+        <?php
+            $categoryChunks = array_chunk($categories, 4);
+        ?>
+        <div
+            id="categoriesCarousel"
+            class="carousel slide"
+        >
+            <div class="carousel-inner">
+                <?php foreach ($categoryChunks as $index => $chunk): ?>
+                    <div class="carousel-item <?= $index == 0 ? 'active' : '' ?>">
+                        <div class="row g-4">
+                            <?php foreach ($chunk as $category): ?>
+                                <div class="col-md-3">
+                                    <a
+                                        href="books.php?category=<?= urlencode($category['category']) ?>"
+                                        class="text-decoration-none"
+                                    >
+                                        <div
+                                            class="card category-card text-white border-0 overflow-hidden"
+                                            style="
+                                                height:200px;
 
-                            background-size:cover;
-                            background-position:center;
-                        "
-                    >
-                        <div
-                            class="d-flex justify-content-center align-items-center h-100"
-                        >
-                            <h3 class="fw-bold">
-                                <?= $category['category'] ?>
-                            </h3>
+                                                background:
+                                                linear-gradient(
+                                                    rgba(0,0,0,0.5),
+                                                    rgba(0,0,0,0.5)
+                                                ),
+
+                                                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600');
+
+                                                background-size:cover;
+                                                background-position:center;
+                                            "
+                                        >
+                                            <div
+                                                class="d-flex justify-content-center align-items-center h-100"
+                                            >
+                                                <h3 class="fw-bold">
+                                                    <?= $category['category'] ?>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <button
+                class="carousel-control-prev custom-carousel-btn"
+                type="button"
+                data-bs-target="#categoriesCarousel"
+                data-bs-slide="prev"
+            >
+                <span
+                    class="carousel-control-prev-icon bg-dark rounded-circle p-4"
+                ></span>
+
+            </button>
+
+            <!-- RIGHT BUTTON -->
+
+            <button
+                class="carousel-control-next custom-carousel-btn"
+                type="button"
+                data-bs-target="#categoriesCarousel"
+                data-bs-slide="next"
+            >
+
+                <span
+                    class="carousel-control-next-icon bg-dark rounded-circle p-4"
+                ></span>
+
+            </button>
         </div>
     </div>
 </section>

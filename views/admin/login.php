@@ -11,7 +11,7 @@
 
     <style>
       .auth-layout {
-        background: linear-gradient(to left, #eef7fd 35%, #01395f 35%);
+        background: linear-gradient(to left, #eef7fd 35%, #212529 35%);
         position: relative;
         padding-left: 5%;
         padding-right: 8%;
@@ -92,23 +92,19 @@
           <div class="mb-4">
             <input type="password" name ="password" placeholder="Password" class="form-control" />
           </div>
-          <button type="submit" name="admin_login" class="btn btn-primary shadow-sm login-btn">
+          <button type="submit" name="admin_login" class="btn btn-danger shadow-sm login-btn">
             Login
           </button>
-          <p class="text-center mt-2">
-            Don't have an account? <a href="register.php">Register Here</a>
-          </p>
         </form>
       </div>
 
 
       <div class="branding-section text-white d-none d-md-flex">
         <div class="branding-content">
-          <h4 class="fw-400">Welcome to our online book store</h4>
-          <h3 class="fw-bold text-primary">ESTORE</h3>
+          <h4 class="fw-400">Welcome to the admin panel</h4>
+          <h3 class="fw-bold text-danger">ESTORE</h3>
           <p class="description-text">
-            Login to discover a wide range of books and enjoy a seamless
-            shopping experience.
+            Login to manage your online store, track orders, and provide excellent customer service.
           </p>
         </div>
       </div>

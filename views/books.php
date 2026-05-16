@@ -27,8 +27,62 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="home.php">
+                ESTORE
+            </a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                class="collapse navbar-collapse"
+                id="navbarNav"
+            >
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="home.php">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="books.php">
+                            Books
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.php">
+                            My Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Cart
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link text-danger"
+                            href="../logout.php"
+                        >
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container py-5">
         <h1 class="mb-4">
             All Books
@@ -88,7 +142,7 @@
                 <button
                     class="btn btn-dark w-100"
                 >
-                    Go
+                    <i class="bi bi-search"></i> Search
                 </button>
             </div>
         </form>
@@ -123,5 +177,11 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">
+            © 2026 ESTORE - All Rights Reserved
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

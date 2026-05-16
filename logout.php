@@ -6,7 +6,7 @@
     session_destroy();
 
     if ($role === 'admin') {
-        header("Location: views/auth/admin_login.php");
+        header("Location: views/admin/login.php");
     }
     else {
         header("Location: views/auth/login.php");
